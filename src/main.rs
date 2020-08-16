@@ -1,6 +1,7 @@
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
+use std::process::exit;
 
 fn main() {
     println!("Guess the number!");
@@ -8,7 +9,7 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
     loop {
-        println!("Please input your guess:");
+        println!("Please input your guess (quit by entering any non-integer):");
 
         let mut guess = String::new();
 
@@ -18,7 +19,7 @@ fn main() {
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
-            Err(_) => continue,
+            Err(_) => exit(0),
         };
 
         println!("You guessed: {}", guess);
