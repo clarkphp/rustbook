@@ -1,38 +1,34 @@
-use rand::Rng;
-use std::cmp::Ordering;
-use std::io;
-use std::process::exit;
-
 fn main() {
-    println!("Guess the number!");
+    let x = 5;
+    let x = x + 1;
+    let x = x * 2;
+    println!("The value of x is {}", x);
 
-    let secret_number = rand::thread_rng().gen_range(1, 101);
-    let mut num_guesses: u32 = 0;
+    let sum = 5 + 10;
+    let diff = 95.5 - 4.3;
+    let product = 4 * 30;
+    let quotient = 56.7 / 32.2;
+    let remainder = 43 % 5;
 
-    loop {
-        println!("Please input your guess (quit by entering any non-integer):");
+    let t = true;
+    let f: bool = false;
 
-        let mut guess = String::new();
+    let c = 'z';
+    let z = 'Z';
+    let heart_eyed_cat = '😻';
 
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    let (x, y, z) = tup;
+    println!("The value of y is: {}", y);
 
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => exit(0),
-        };
+    let five_hundred = tup.0;
+    let six_point_four = tup.1;
+    let one = tup.2;
 
-        num_guesses = num_guesses + 1;
-        println!("You guessed: {} on attempt {}", guess, num_guesses);
+    let a = [1, 2, 3, 4, 5];
+    let ar: [i32; 5] = [1, 2, 3, 4, 5];
+    let arr = [3; 5];
 
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            }
-        }
-    }
+    let index = 10;
+    let element = a[index]; // out of bounds array access
 }
