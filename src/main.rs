@@ -18,7 +18,8 @@ fn main() {
     let ref_3 = &mut s;
     println!("{}", ref_3);
 
-    let ref_to_nothing = dangle();
+    let not_a_ref_to_nothing = no_dangle();
+    println!("{}", not_a_ref_to_nothing);
 }
 
 fn calc_length(input: &String) -> usize {
@@ -31,10 +32,10 @@ fn change(some_string: &mut String) {
     some_string.push_str(", with appended text");
 }
 
-fn dangle() -> &String {
+fn no_dangle() -> String {
     // scope of s is this function only
-    let s = String::from("hello");
+    let s = String::from("Rust prevents dangling references!");
 
-    // attempt to return the address of s, which is about to go out of scope, and be returned to heap
-    &s
+    // return the string, not a ref to it; offers ownership to the caller
+    s
 }
